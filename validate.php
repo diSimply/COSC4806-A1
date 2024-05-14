@@ -7,11 +7,21 @@
   $username = $_REQUEST['username'];
   $password = $_REQUEST['password'];
   
-  echo "Username " . $username . " Password " . $password;
   if ($username == $valid_username && $password == $valid_password) {
-    echo "Success";
+      echo "Success";
+      $_SESSION['authenticated'] = true;
+      $_SESSION['failed_attempts'] = 0;
   } else {
-    echo "Failed";
+    // check the session variable
+    if (isset($_SESSION['failed_attempts'])) {
+      // session variable already exists, update it
+      $_SESSION['failed_attempts'] = $_SESSION['failed_attempts'] + 1;
+    } else {
+      // session variable does not exist, initialize it
+       $_SESSION['failed_attempts'] = 1;
+    }
+
+    echo 'You have failed attempted ' . $_SESSION['failed_attempts'] . 'times';
   }
 
 ?>

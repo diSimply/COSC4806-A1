@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  $authenticated = $_SESSION['authenticated'];
+  if ($authenticated) {
+    // redirect to home page when authenticated
+    header('location: /');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

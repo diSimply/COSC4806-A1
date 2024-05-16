@@ -1,8 +1,13 @@
 <?php
   session_start();
-  $username = $_SESSION['username'];
-  $authenticated = $_SESSION['authenticated'];
-  if (!$authenticated) {
+  if (isset($_SESSION['authenticated'])) {
+    $username = $_SESSION['username'];
+    $authenticated = $_SESSION['authenticated'];
+    if (!$authenticated) {
+      // redirect to login page when not authenticated
+      header('location: /login.php');
+    }
+  } else {
     // redirect to login page when not authenticated
     header('location: /login.php');
   }
@@ -16,7 +21,12 @@
     <title>Home</title>
 </head>
 <body>
- <h1>Welcome <?php echo $username ?>, you are in the home page.</h1>
+  <h1>Assignment 1 Home</h1>
+  <p>
+   <div>Welcome <strong><?php echo $username ?></strong>!</div>
+   <div>Today is <i><?php echo date("M d, Y")?></i>.</div> 
+   <div>You are in the home page.</div>
+  </p>
 </body>
 </html>
 

@@ -1,9 +1,11 @@
 <?php
   session_start();
-  $authenticated = $_SESSION['authenticated'];
-  if ($authenticated) {
-    // redirect to home page when authenticated
-    header('location: /');
+  if (isset($_SESSION['authenticated'])) {
+    $authenticated = $_SESSION['authenticated'];
+    if ($authenticated) {
+      // redirect to home page when authenticated
+      header('location: /');
+    }
   }
 ?>
 

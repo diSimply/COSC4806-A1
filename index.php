@@ -26,6 +26,7 @@
    <div>Welcome <strong><?php echo $username ?></strong>!</div>
    <div>Today is <i><?php echo date("M d, Y")?></i>.</div> 
    <div>You are in the home page.</div>
+   <a href="logout.php">Logout</a>
   </p>
 </body>
 </html>
